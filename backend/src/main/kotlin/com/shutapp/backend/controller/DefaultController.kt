@@ -10,7 +10,7 @@ class DefaultController {
 
     @GetMapping("/hello")
     fun getHello() : String {
-        return "kotlin";
+        return "wygranko";
     }
 
 }
