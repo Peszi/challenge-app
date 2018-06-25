@@ -13,12 +13,22 @@ html {
   --colorDarkBlue2: rgb(24, 53, 61);
 }
 
+.title {
+  font-size: 2.8em;
+}
+
+/* SM */
+@media (min-width: 576px) {
+  .title {
+    font-size: 4.5em;
+  }
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   /*font-family: 'Roboto Mono', monospace;*/
   width: 100vw;
   height: 100vh;
-  background-color: var(--colorYellow) !important;
 }
 
 .fullPage {
@@ -34,11 +44,11 @@ body {
   padding: 0.25rem 0.5rem 0.5rem 0.5rem;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25) !important;
   background:
-    linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.75)) !important;
+    linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)) !important;
 }
 
 .card-title {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
@@ -47,6 +57,7 @@ body {
 .card-body {
   margin: 0;
   padding: 0 0.25rem;
+  display: flex;
 }
 
 .txt-outline {
