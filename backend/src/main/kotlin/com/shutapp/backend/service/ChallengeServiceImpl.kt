@@ -2,6 +2,7 @@ package com.shutapp.backend.service
 
 import com.shutapp.backend.data.ChallengeDTO
 import com.shutapp.backend.exception.BadRequestException
+import com.shutapp.backend.exception.NotFoundException
 import com.shutapp.backend.model.ChallengeEntity
 import com.shutapp.backend.repository.ChallengeRepository
 import org.springframework.stereotype.Service
@@ -16,11 +17,11 @@ internal class ChallengeServiceImpl(val challengeRepository: ChallengeRepository
         throw BadRequestException("Name in use!")
     }
 
-    override fun getChallenge(id: Long): ChallengeDTO? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getChallenge(name: String): ChallengeDTO? {
+        return challengeRepository.findByName(name)?.toDTO() ?: throw NotFoundException("Challenge not found!")
     }
 
     override fun getChallenges(): List<ChallengeDTO> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return challengeRepository.findAll().map { it.toDTO() }
     }
 }

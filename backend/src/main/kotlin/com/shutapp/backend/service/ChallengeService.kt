@@ -6,7 +6,7 @@ interface ChallengeService {
 
     fun createChallenge(name: String): ChallengeDTO?
 
-    fun getChallenge(id: Long): ChallengeDTO?
+    fun getChallenge(name: String): ChallengeDTO?
 
     fun getChallenges(): List<ChallengeDTO>
 

@@ -13,7 +13,17 @@ class ChallengeController(val challengeService: ChallengeService) {
 
     @PostMapping("/challenge/{name}")
     fun createChallenge(@PathVariable name: String): ResponseEntity<ChallengeDTO> {
-        return ResponseEntity(challengeService.createChallenge(name), HttpStatus.CREATED);
+        return ResponseEntity(challengeService.createChallenge(name), HttpStatus.CREATED)
+    }
+
+    @GetMapping("/challenge/{name}")
+    fun getChallenge(@PathVariable name: String): ResponseEntity<ChallengeDTO> {
+        return ResponseEntity(challengeService.getChallenge(name), HttpStatus.OK)
+    }
+
+    @GetMapping("/challenges")
+    fun getChallenges(): ResponseEntity<List<ChallengeDTO>> {
+        return ResponseEntity(challengeService.getChallenges(), HttpStatus.OK)
     }
 
 }
