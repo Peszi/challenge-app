@@ -11,6 +11,11 @@ import java.util.*
 @RestController
 class ChallengeController(val challengeService: ChallengeService) {
 
+    @GetMapping("/challenge/valid/{name}")
+    fun checkChallengeName(@PathVariable name: String): ResponseEntity<String> {
+        return ResponseEntity(challengeService.checkChallengeName(name), HttpStatus.OK)
+    }
+
     @PostMapping("/challenge/{name}")
     fun createChallenge(@PathVariable name: String): ResponseEntity<ChallengeDTO> {
         return ResponseEntity(challengeService.createChallenge(name), HttpStatus.CREATED)

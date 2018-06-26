@@ -1,0 +1,39 @@
+<div class="container mt-md-5">
+  <div class="row justify-content-center">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <p class="txt-outline font-weight-bold text-white title my-3">#{{ pageTitle | uppercase }}</p>
+    </div>
+  </div>
+  <div class="row" style="margin-right: -0.25rem; margin-left: -0.25rem">
+    <div class="col-md-4 px-1">
+      <div class="card-container">
+        <div class="card-title">Dodaj wyzwanie</div>
+        <form [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
+          <div class="card-body flex-row">
+            <input class="form-control form-control-sm mr-1 flex-fill"  formControlName="name" style="min-width: 50px" type="text" placeholder="nazwa..">
+            <button type="submit" [disabled]="challengeForm.status != 'VALID'" class="btn btn-sm btn-outline-dark col-md">Utwórz</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-container">
+        <div class="card-title mb-1">Wygranka</div>
+        <div class="card-body">
+          <div class="d-flex flex-column w-100" style="border-color: rgba(0, 0, 0, .25); border-radius: 2px">
+            <p class="m-0" style="border-color: rgba(0, 0, 0, .25) !important; font-size: 0.9rem"
+               *ngFor="let user of winnersList; let i = index"
+               [ngClass]="{'border-top' : i != 0}">{{ user }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 px-1">
+      <div class="card-container">
+        <div class="card-title">Podejmij wyzwanie</div>
+        <div class="card-body">
+          Welcome to {{ hello }}!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<small class="bg-transparent-light text-muted position-fixed px-2" style="bottom: 0; right: 0">powered by {{ hello }}</small>

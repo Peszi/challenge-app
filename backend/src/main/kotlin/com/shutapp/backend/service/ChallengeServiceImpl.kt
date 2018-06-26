@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 internal class ChallengeServiceImpl(val challengeRepository: ChallengeRepository) : ChallengeService {
 
+    override fun checkChallengeName(name: String): String {
+        challengeRepository.findByName(name)?.let { throw BadRequestException("Name in use!") } ?: return "Name available!"
+    }
+
     override fun createChallenge(name: String): ChallengeDTO? {
         challengeRepository.findByName(name) ?: return challengeRepository.save(ChallengeEntity.create(name)).toDTO()
         throw BadRequestException("Name in use!")

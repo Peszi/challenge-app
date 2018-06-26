@@ -5,6 +5,8 @@ import { environment } from "../../../environments/environment";
 @Injectable()
 export class RequestService {
 
+  private challenge: ChallengeModel;
+
   constructor(private httpClient: HttpClient) { }
 
   getHello() {
@@ -12,7 +14,15 @@ export class RequestService {
   }
 
   createChallengeRequest(name: string) {
-    this.httpClient.post<>(environment.API + "challenge/" + name);
+    this.httpClient.post<ChallengeModel>(environment.API + "challenge/" + name, null)
+      .subscribe((challenge: ChallengeModel) => {
+        this.challenge = challenge;
+        console.log(this.challenge);
+      });
   }
 
+}
+
+export interface ChallengeModel {
+  name: string;
 }
